@@ -1,9 +1,9 @@
 import {createApp} from 'vue'
-import './style.css'
 import App from './App.vue'
 import router from '@/router'; // 导入路由配置
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import 'animate.css';
+import '@/styles/index.scss' // 导入全局样式文件
 
 const app = createApp(App);
 // 全局注册所有图标
