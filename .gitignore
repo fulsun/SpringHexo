@@ -37,3 +37,4 @@ build/
 node_modules
 dist/
 rebel.xml
+/backend/src/main/resources/static/
