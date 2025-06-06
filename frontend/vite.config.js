@@ -16,7 +16,10 @@ export default defineConfig({
             resolvers: [ElementPlusResolver()],
         }),
         Components({
-            resolvers: [ElementPlusResolver()],
+            resolvers: [
+                // 自动导入 Element Plus 组件
+                ElementPlusResolver()
+            ],
         }),
     ],
     devServer: {
