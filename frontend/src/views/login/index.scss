@@ -1,0 +1,40 @@
+.login-container {
+  height: 100vh;
+  display: flex;
+  align-items: center; // 垂直居中
+  justify-content: center; // 水平居中
+
+  .form {
+    width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+
+    > span {
+      display: block;
+      margin-bottom: 40px;
+      font-size: 26px;
+      font-weight: bold;
+      color: #333;
+      text-align: center; // 文本或行内元素在父容器中水平居中
+    }
+
+
+    :deep(.el-form-item) {
+      margin-bottom: 20px;
+    }
+
+    :deep(.el-input) {
+      --el-input-border-radius: 8px;
+      height: 48px;
+    }
+
+    :deep(.el-button) {
+      height: 48px;
+      width: 100%;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: bold;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+  }
+}

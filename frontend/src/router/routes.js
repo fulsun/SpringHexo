@@ -3,6 +3,11 @@ export const Layout = () => import("@/layout/index.vue");
 // 静态路由配置
 const constantRoutes = [
     {
+        path: "/login",
+        name: "Login",
+        component: () => import("@/views/login/index.vue"),
+    },
+    {
         path: "/",
         name: "Layout",
         component: Layout,
