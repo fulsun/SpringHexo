@@ -14,7 +14,10 @@ export default defineConfig({
     plugins: [
         vue(),
         AutoImport({
-            resolvers: [ElementPlusResolver()],
+            resolvers: [
+                // 配置Element Plus采用saas样式配色系统
+                ElementPlusResolver({importStyle: 'sass'}),
+            ],
         }),
         Components({
             resolvers: [
@@ -27,6 +30,14 @@ export default defineConfig({
             localEnabled: true // 开发环境启用
         })
     ],
+    css: {
+        preprocessorOptions: {
+            scss: {
+                // 自动导入定制化样式文件进行样式覆盖
+                additionalData: `@use "@/styles/element/index.scss" as *;`
+            }
+        }
+    },
     devServer: {
         port: 3000, // 设置端口号
         // host: '0.0.0.0', // 允许外部访问
