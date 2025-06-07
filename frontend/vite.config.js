@@ -5,6 +5,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import {ElementPlusResolver} from 'unplugin-vue-components/resolvers'
 import {viteMockServe} from 'vite-plugin-mock'
+import {createSvgIconsPlugin} from 'vite-plugin-svg-icons'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -24,6 +25,12 @@ export default defineConfig({
                 // 自动导入 Element Plus 组件
                 ElementPlusResolver()
             ],
+        }),
+        createSvgIconsPlugin({
+            // 指定图标文件夹
+            iconDirs: [path.resolve(__dirname, './src/assets/icons')],
+            // 指定symbolId格式
+            symbolId: 'icon-[name]'
         }),
         viteMockServe({
             mockPath: 'mock', // mock文件存放目录
