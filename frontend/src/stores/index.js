@@ -4,9 +4,14 @@ import piniaPersistConfig from "@/config/piniaPersist";
 
 
 export const GlobalStore = defineStore('GlobalState', {
-    state: () => {
-        return {token: "",}
-    },
+    state: () => ({
+
+        token: '',
+        themeConfig: {
+            // 折叠菜单
+            isCollapse: false,
+        }
+    }),
     actions: {
         setToken(token) {
             this.token = token;

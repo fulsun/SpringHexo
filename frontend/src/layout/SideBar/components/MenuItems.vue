@@ -1,6 +1,6 @@
 <template>
   <div class="menu-container">
-    <el-menu :router="true" default-active="/home" mode="vertical">
+    <el-menu :collapse="isCollapse" :router="true" default-active="/home" mode="vertical">
       <!-- 遍历菜单项 -->
       <template v-for="item in menu.menuItems" :key="item.id">
         <!-- 有子菜单的情况：使用 el-sub-menu -->
@@ -41,9 +41,13 @@
 </template>
 
 <script setup>
-import {onMounted, reactive} from 'vue'
+import {computed, onMounted, reactive} from 'vue'
 import request from "@/utils/request";
 import SvgIcon from "@/components/SvgIcon.vue";
+import {GlobalStore} from "@/stores/index.js";
+
+const globalStore = GlobalStore();   // 获取全局状态
+const isCollapse = computed(() => globalStore.themeConfig.isCollapse);
 
 const menu = reactive({
   menuItems: [],
