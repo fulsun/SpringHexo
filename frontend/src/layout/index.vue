@@ -12,8 +12,8 @@ import SideBar from '@/layout/SideBar/index.vue';
 <style lang="scss" scoped>
 .main-layout {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   box-sizing: border-box; // width 和 height 包含 padding 和 border，
-
 }
+
 </style>

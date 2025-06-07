@@ -14,7 +14,8 @@
         <MenuItems></MenuItems>
       </el-menu>
     </div>
-
+    <!-- 侧边栏菜单footer -->
+    <SideBarFooter/>
   </div>
 
 </template>
@@ -22,6 +23,7 @@
 <script setup>
 import {ref} from 'vue'
 import MenuItems from "@/layout/SideBar/components/MenuItems.vue";
+import SideBarFooter from "@/layout/SideBar/components/SideBarFooter.vue";
 
 const props = defineProps({
   mode: {
@@ -81,7 +83,7 @@ const initSideMenus = async () => {
 
 
   .siderbar-menu-container {
-    height: calc(100vh - #{$side-bar-header-height} - 15vh); // 使用插值语法 #{}
+    height: calc(100vh - #{$side-bar-header-height} - 130px); // 使用插值语法 #{}
     border-bottom: 1px solid var(--el-border-color);
     /* 方法1：精确选择器 */
     .el-menu--horizontal.el-menu {
