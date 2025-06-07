@@ -1,0 +1,27 @@
+
+.el-header {
+  border: 1px solid black;
+  background-color: #222;
+  color: #fff;
+  display: flex;
+  align-items: center;
+
+  > span { // > 后代选择器
+    flex-shrink: 0; // 元素缩小，不占用空间
+    display: block; // 元素显示为块级元素
+    width: 200px; // 元素宽度
+    font-size: 24px; // 字体大小
+    font-weight: bold; // 字体粗细
+    text-align: center; // 文字居中
+  }
+
+  .column-inner {
+    height: 0;
+
+    .el-aside {
+      height: 100%;
+      border-right: 1px solid var(--el-border-color);
+    }
+  }
+
+}
