@@ -4,7 +4,7 @@
     </div>
     <div class="error-info">
       <div class="title"> 404</div>
-      <el-button class="return-home" type="primary" @click="$router.push('/admin/')">Back to home</el-button>
+      <el-button class="return-home" type="primary" @click="$router.push('/')">Back to home</el-button>
     </div>
   </div>
 </template>

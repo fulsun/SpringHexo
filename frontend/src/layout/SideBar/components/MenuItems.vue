@@ -74,5 +74,13 @@ onMounted(() => {
   .el-menu-item {
     font-size: 16px;
   }
+
+  .el-menu-item {
+    font-size: 16px;
+  }
+
+  .el-sub-menu__title span {
+    font-size: 16px;
+  }
 }
 </style>
