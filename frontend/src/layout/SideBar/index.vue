@@ -7,8 +7,12 @@
         <img alt="logo" src="@/assets/img/logo.png"> </img>
         <span>Hexo Admin</span>
       </div>
-
-
+    </div>
+    <!--侧边栏菜单-->
+    <div :border="false" class="siderbar-menu-container">
+      <el-menu default-active="/home" mode="vertical">
+        <MenuItems></MenuItems>
+      </el-menu>
     </div>
 
   </div>
@@ -17,6 +21,7 @@
 
 <script setup>
 import {ref} from 'vue'
+import MenuItems from "@/layout/SideBar/components/MenuItems.vue";
 
 const props = defineProps({
   mode: {
@@ -74,6 +79,16 @@ const initSideMenus = async () => {
 
   }
 
+
+  .siderbar-menu-container {
+    height: calc(100vh - #{$side-bar-header-height} - 15vh); // 使用插值语法 #{}
+    border-bottom: 1px solid var(--el-border-color);
+    /* 方法1：精确选择器 */
+    .el-menu--horizontal.el-menu {
+      border-bottom: none !important;
+    }
+
+  }
 }
 
 

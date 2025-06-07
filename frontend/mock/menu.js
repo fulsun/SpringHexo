@@ -1,6 +1,6 @@
 export default [
     {
-        url: '/api/getMenu',
+        url: '/api/getMenuItems',
         method: 'get',
         response: () => {
             return {
@@ -8,30 +8,35 @@ export default [
                 data: {
                     menu: [
                         {
+                            id: 1,
                             name: '首页',
                             path: '/home',
-                            icon: 'home'
+                            icon: 'HomeFilled'
                         },
                         {
+                            id: 2,
                             name: '文章',
                             path: '/posts',
                             icon: 'edit'
                         },
                         {
+                            id: 3,
                             name: '归档',
                             path: '/archives',
-                            icon: 'archive'
+                            icon: 'MessageBox'
                         },
 
                         {
+                            id: 4,
                             name: '标签',
                             path: '/tags',
-                            icon: 'tag'
+                            icon: 'PriceTag'
                         },
                         {
+                            id: 5,
                             name: '关于',
                             path: '/about',
-                            icon: 'info'
+                            icon: 'Avatar'
                         },
 
                     ]
