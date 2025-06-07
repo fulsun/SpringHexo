@@ -4,6 +4,7 @@ import path from 'path'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import {ElementPlusResolver} from 'unplugin-vue-components/resolvers'
+import {viteMockServe} from 'vite-plugin-mock'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -21,6 +22,10 @@ export default defineConfig({
                 ElementPlusResolver()
             ],
         }),
+        viteMockServe({
+            mockPath: 'mock', // mock文件存放目录
+            localEnabled: true // 开发环境启用
+        })
     ],
     devServer: {
         port: 3000, // 设置端口号
