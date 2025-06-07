@@ -1,7 +1,16 @@
 <template>
-  <div class="main-layout">
-    <!-- 侧边栏-->
-    <SideBar/>
+  <div class="common-layout">
+    <el-container>
+      <el-aside class="main-layout">
+        <SideBar/>
+      </el-aside>
+      <el-container>
+        <el-header>
+          header
+        </el-header>
+        <el-main>Main</el-main>
+      </el-container>
+    </el-container>
   </div>
 </template>
 
@@ -10,10 +19,18 @@ import SideBar from '@/layout/SideBar/index.vue';
 </script>
 
 <style lang="scss" scoped>
-.main-layout {
-  width: 100%;
-  height: 100vh;
+@use "@/styles/variables.scss" as *;
+
+.common-layout {
+  height: 100vb;
+  width: 100vh;
   box-sizing: border-box; // width 和 height 包含 padding 和 border，
+}
+
+.main-layout {
+  width: $sidebar-width;
+  overflow-x: hidden;
+
 }
 
 </style>
