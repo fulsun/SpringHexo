@@ -27,7 +27,9 @@ export default defineConfig({
         }),
         viteMockServe({
             mockPath: 'mock', // mock文件存放目录
-            localEnabled: true // 开发环境启用
+            localEnabled: true, // 开发环境启用
+            prodEnabled: false, // 生产环境禁用
+            logger: true, // 启用日志，方便调试
         })
     ],
     css: {
@@ -45,7 +47,7 @@ export default defineConfig({
         // open: true, // 启动时自动打开浏览器
         // hot: true, // 热更新
         proxy: {
-            '/api': {
+            '/api2': {
                 target: 'http://127.0.0.1:8080', // 目标服务器地址
                 changeOrigin: true, // 允许跨域
                 pathRewrite: {'^/api': ''} // 重写路径
