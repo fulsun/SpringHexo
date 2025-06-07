@@ -33,10 +33,15 @@
 
 <script setup>
 import {reactive, ref} from "vue";
+import {loginApi} from "@/http/modules/login.js";
+import {GlobalStore} from "@/stores/index.js";
+import router from "@/router/index.js";
+import {getTimeState} from "@/utils/utils.js";
 
 const isRemember = ref(false);
 const loading = ref(false);
 const loginForm = reactive({username: "", password: ""});
+const globalStore = GlobalStore();
 
 // 表单校验
 const loginFormRef = ref();
@@ -49,9 +54,27 @@ const rules = reactive({
 const onLogin = (formEl) => {
   if (!formEl) return;
   formEl.validate(async (valid) => {
-    // todo 表单校验通过后，发送登录请求
+    if (!valid) return;
+    loading.value = true;
+    try {
+      const {data, code, message} = await loginApi(loginForm);
+      if (code !== 200) {
+        return ElMessage.error(message);
+      }
+      globalStore.setToken(data.token);
+      router.push("/");
+      ElNotification({
+        title: getTimeState(),
+        message: data.userInfo.username,
+        type: "success",
+        duration: 3000
+      });
+    } finally {
+      loading.value = false;
+    }
   });
 };
+
 </script>
 
 <style lang="scss" scoped>

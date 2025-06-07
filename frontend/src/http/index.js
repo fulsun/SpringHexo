@@ -1,6 +1,5 @@
 import axios from "axios";
 import {GlobalStore} from "@/stores/index.js";
-import {ElMessage} from "element-plus";
 import router from "@/router/index.js";
 import {checkStatus} from "@/http/status/index.js";
 
@@ -37,9 +36,10 @@ service.interceptors.request.use(config => {
 service.interceptors.response.use(response => {
     removePending(response.config) // 在请求结束后，移除本次请求
     // 对响应数据做点什么
-    const {data, code} = response;
+
+    const {data} = response;
     const globalStore = GlobalStore();
-    if (code === 401) {
+    if (data.code === 401) {
         // 未登录状态下 跳转登录页面
         ElMessage.error("登录失效，请重新登录");
         globalStore.setToken("");
