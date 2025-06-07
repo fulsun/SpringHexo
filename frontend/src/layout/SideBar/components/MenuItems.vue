@@ -67,6 +67,10 @@ onMounted(() => {
 .menu-container {
   user-select: none;
 
+  .el-menu {
+    border-right: none !important; /* 移除所有边框 */
+  }
+
   .el-menu-item {
     font-size: 16px;
   }

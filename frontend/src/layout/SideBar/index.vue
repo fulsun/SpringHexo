@@ -10,9 +10,7 @@
     </div>
     <!--侧边栏菜单-->
     <div :border="false" class="siderbar-menu-container">
-      <el-menu default-active="/home" mode="vertical">
-        <MenuItems></MenuItems>
-      </el-menu>
+      <MenuItems></MenuItems>
     </div>
     <!-- 侧边栏菜单footer -->
     <SideBarFooter/>
