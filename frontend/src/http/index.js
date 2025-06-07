@@ -34,7 +34,7 @@ service.interceptors.request.use(config => {
 });
 
 // 响应拦截器
-service.interceptors.responsinterceptors.respone.use(response => {
+service.interceptors.response.use(response => {
     removePending(response.config) // 在请求结束后，移除本次请求
     // 对响应数据做点什么
     const {data, code} = response;
