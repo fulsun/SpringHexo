@@ -11,7 +11,7 @@ export default [
                             id: 1,
                             name: '首页',
                             path: '/home',
-                            icon: 'HomeFilled'
+                            icon: 'home'
                         },
                         {
                             id: 2,
@@ -23,22 +23,35 @@ export default [
                             id: 3,
                             name: '归档',
                             path: '/archives',
-                            icon: 'MessageBox'
+                            icon: 'archives'
                         },
 
                         {
                             id: 4,
                             name: '标签',
                             path: '/tags',
-                            icon: 'PriceTag'
+                            icon: 'tag'
                         },
                         {
                             id: 5,
                             name: '关于',
                             path: '/about',
-                            icon: 'Avatar'
+                            icon: 'avatar'
                         },
-
+                        {
+                            id: 6,
+                            name: '系统设置',
+                            path: '/settings',
+                            icon: 'settings',
+                            children: [
+                                {
+                                    id: 7,
+                                    name: '导入文章',
+                                    path: '/settings/importPost',
+                                    icon: 'import'
+                                }
+                            ]
+                        }
                     ]
                 }
             }
