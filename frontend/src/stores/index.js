@@ -26,10 +26,10 @@ export const GlobalStore = defineStore('GlobalState', {
         },
         addTabs(tabItem) {
             // 如果标签页列表中不存在该标签页，则添加
-
             if (!this.tabsMenuList.some(item => item.path === tabItem.path)) {
                 this.tabsMenuList.push(tabItem);
             }
+            
         },
         removeTabs(tabPath, isCurrent = true) {
             const tabsMenuList = this.tabsMenuList;
@@ -46,6 +46,11 @@ export const GlobalStore = defineStore('GlobalState', {
             this.tabsMenuList = tabsMenuList.filter((item) => item.path !== tabPath);
             // 全部标签页关闭时，清空标签页列表
             if (this.tabsMenuList.length === 0) {
+                if (!router) {
+                    console.error('路由实例获取失败');
+                    return;
+                }
+                console.log('尝试跳转到首页');
                 router.push("/"); // 跳转到首页
             }
         }

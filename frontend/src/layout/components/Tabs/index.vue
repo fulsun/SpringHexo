@@ -31,26 +31,32 @@ import {GlobalStore} from "@/stores/index.js";
 import Icon from "@/components/Icon.vue";
 import {useRoute} from "vue-router";
 // 打开的标签页
-const tabsMenuValue = ref();
 const route = useRoute();
+const tabsMenuValue = ref(route.path);
 const globalStore = GlobalStore();
 const tabsMenuList = computed(() => globalStore.tabsMenuList);
 
-
 // 监控地址栏变化
-watch(() => route.path, (newVal) => {
-  const tab = {
-    icon: route.meta.icon,
-    title: route.meta.title,
-    path: route.path,
-  };
-  globalStore.addTabs(tab);
-
+watch(() => route.path, (newPath) => {
+  try {
+    // 路由变化时执行的逻辑，例如重新获取数据
+    const tab = {
+      icon: route.meta.icon,
+      title: route.meta.title,
+      path: route.path,
+    };
+    globalStore.addTabs(tab);
+    // 切换标签页
+    tabsMenuValue.value = newPath;
+  } catch (error) {
+    console.error('路由变化处理出错:', error);
+  }
 });
 
 const changeTabsMenu = (path) => {
   // 切换标签页
-  router.push(path);
+  const fullPath = path;
+  router.push(fullPath);
 }
 
 const removeTab = (path) => {

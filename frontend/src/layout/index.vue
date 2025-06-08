@@ -43,7 +43,6 @@ import {useRoute} from "vue-router";
 import Main from "@/layout/components/Main/index.vue";
 import Tabs from "@/layout/components/Tabs/index.vue";
 
-
 const globalStore = GlobalStore();
 const menuStore = useMenuStore();
 const isCollapse = computed(() => globalStore.themeConfig.isCollapse);
