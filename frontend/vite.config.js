@@ -6,6 +6,7 @@ import Components from 'unplugin-vue-components/vite'
 import {ElementPlusResolver} from 'unplugin-vue-components/resolvers'
 import {viteMockServe} from 'vite-plugin-mock'
 import {createSvgIconsPlugin} from 'vite-plugin-svg-icons'
+import PurgeIcons from 'vite-plugin-purge-icons'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -28,16 +29,18 @@ export default defineConfig({
         }),
         createSvgIconsPlugin({
             // 指定图标文件夹
-            iconDirs: [path.resolve(__dirname, './src/assets/icons')],
+            iconDirs: [path.resolve(__dirname, './src/assets/svgs')],
             // 指定symbolId格式
-            symbolId: 'icon-[name]'
+            symbolId: 'icon-[dir]-[name]',
+            svgoOptions: true, // 传递给svgo的配置项
         }),
         viteMockServe({
             mockPath: 'mock', // mock文件存放目录
             localEnabled: true, // 开发环境启用
             prodEnabled: false, // 生产环境禁用
             logger: true, // 启用日志，方便调试
-        })
+        }),
+        PurgeIcons()
     ],
     css: {
         preprocessorOptions: {
