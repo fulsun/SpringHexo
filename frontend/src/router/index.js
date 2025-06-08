@@ -11,7 +11,8 @@ const router = createRouter({
 // 全局前置守卫
 router.beforeEach((to, from, next) => {
     const whiteList = ['/login', '/404']
-    if (getToken()) { // 已登录
+    var token = getToken();
+    if (token && token.trim() !== '') { // 已登录
         if (to.path === '/login') {
             next('/') // 重定向到首页
         } else {

@@ -19,7 +19,12 @@
         </el-scrollbar>
       </el-aside>
       <el-container>
-        <el-main>Main</el-main>
+        <!-- 这里是菜单栏-->
+        <Tabs/>
+        <el-main>
+          <!-- 这里是主要内容-->
+          <Main/>
+        </el-main>
         <el-footer>
           footer
         </el-footer>
@@ -35,6 +40,8 @@ import SubMenu from "@/layout/components/Menu/SubMenu.vue";
 import {GlobalStore} from "@/stores";
 import {useMenuStore} from "@/stores/modules/menu";
 import {useRoute} from "vue-router";
+import Main from "@/layout/components/Main/index.vue";
+import Tabs from "@/layout/components/Tabs/index.vue";
 
 
 const globalStore = GlobalStore();

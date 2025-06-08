@@ -14,6 +14,7 @@ export const GlobalStore = defineStore('GlobalState', {
             avatar: "",
             username: "",
         },
+        tabsMenuList: [], // 标签菜单列表
     }),
     actions: {
         setToken(token) {
@@ -22,9 +23,16 @@ export const GlobalStore = defineStore('GlobalState', {
         setUserInfo(userInfo) {
             this.userInfo = userInfo;
         },
+        addTabs(tabItem) {
+            // 如果标签页列表中不存在该标签页，则添加
+
+            if (!this.tabsMenuList.some(item => item.path === tabItem.path)) {
+                this.tabsMenuList.push(tabItem);
+            }
+        },
     },
     persist: piniaPersistConfig("GlobalState"),
-})
+});
 
 // piniaPersist(持久化) 默认存储位置：localStorage
 const pinia = createPinia();

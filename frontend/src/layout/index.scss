@@ -40,3 +40,12 @@
   }
 
 }
+
+// 内容区域
+.el-main {
+
+  padding: 5px;
+  display: flex;
+  flex-direction: column; //上下排列
+  height: 100%;
+}

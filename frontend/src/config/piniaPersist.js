@@ -4,7 +4,7 @@
  * @param {Array} paths 需要持久化的 state name
  * @return persist
  * */
-const piniaPersistConfig = (key, paths) => {
+const piniaPersistConfig = (key, paths = []) => {
     const persist = {
         key,
         storage: localStorage,
