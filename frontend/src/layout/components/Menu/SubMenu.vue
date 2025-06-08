@@ -20,8 +20,6 @@
 </template>
 
 <script setup>
-import {defineProps} from "vue";
-import Icon from "@/components/Icon.vue";
 
 defineProps({
   menuList: {

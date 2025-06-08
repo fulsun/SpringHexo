@@ -1,8 +1,11 @@
 <template>
   <div class="header">
     <div class="header-left">
-      <Icon :icon="themeConfig.isCollapse ? 'ep:expand' : 'ep:fold'" :size="24" class="collapse-icon"
+      <Icon :class="['collapse-icon', { 'is-active': themeConfig.isCollapse }]"
+            :size="24"
+            icon="material-symbols-light:menu-open"
             @click="collapse"/>
+
     </div>
     <div class="header-right">
     </div>
