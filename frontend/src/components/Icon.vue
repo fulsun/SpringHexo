@@ -1,5 +1,5 @@
 <script setup>
-import {computed, defineProps, nextTick, ref, unref, watch} from 'vue'
+import {computed, nextTick, ref, unref, watch} from 'vue'
 import Iconify from '@purge-icons/generated'
 // 判断是否是本地图标
 const isLocal = computed(() => props.icon.startsWith('svg-icon:'))

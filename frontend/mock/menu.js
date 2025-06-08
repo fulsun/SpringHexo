@@ -9,46 +9,46 @@ export default [
                     menu: [
                         {
                             id: 1,
-                            name: '首页',
+                            title: '首页',
                             path: '/home',
-                            icon: 'home'
+                            icon: 'mdi-light:home'
                         },
                         {
                             id: 2,
-                            name: '文章',
+                            title: '文章',
                             path: '/posts',
-                            icon: 'edit'
+                            icon: 'material-symbols:edit-note'
                         },
                         {
                             id: 3,
-                            name: '归档',
+                            title: '归档',
                             path: '/archives',
-                            icon: 'archives'
+                            icon: 'ion:library-outline'
                         },
 
                         {
                             id: 4,
-                            name: '标签',
+                            title: '标签',
                             path: '/tags',
-                            icon: 'tag'
+                            icon: 'tdesign:tag'
                         },
                         {
                             id: 5,
-                            name: '关于',
+                            title: '关于',
                             path: '/about',
-                            icon: 'avatar'
+                            icon: 'icon-park-outline:avatar'
                         },
                         {
                             id: 6,
-                            name: '系统设置',
+                            title: '系统设置',
                             path: '/settings',
-                            icon: 'settings',
+                            icon: 'mdi-light:settings',
                             children: [
                                 {
                                     id: 7,
-                                    name: '导入文章',
+                                    title: '导入文章',
                                     path: '/settings/importPost',
-                                    icon: 'import'
+                                    icon: 'mdi:import'
                                 }
                             ]
                         }

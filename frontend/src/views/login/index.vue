@@ -35,6 +35,7 @@
 import {reactive, ref} from "vue";
 import {loginApi} from "@/http/modules/login.js";
 import {GlobalStore} from "@/stores/index.js";
+import {useMenuStore} from "@/stores/modules/menu.js";
 import router from "@/router/index.js";
 import {getTimeState} from "@/utils/utils.js";
 
@@ -42,6 +43,7 @@ const isRemember = ref(false);
 const loading = ref(false);
 const loginForm = reactive({username: "", password: ""});
 const globalStore = GlobalStore();
+const menuStore = useMenuStore();
 
 // 表单校验
 const loginFormRef = ref();
@@ -62,6 +64,8 @@ const onLogin = (formEl) => {
         return ElMessage.error(message);
       }
       globalStore.setToken(data.token);
+      // 加载菜单信息
+      await menuStore.getMenuList();
       router.push("/");
       ElNotification({
         title: getTimeState(),

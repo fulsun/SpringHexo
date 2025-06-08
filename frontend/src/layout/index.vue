@@ -6,7 +6,17 @@
     </el-header>
     <el-container class="column-inner">
       <el-aside :width="isCollapse ? '65px' : '200px'">
-        <SideBar/>
+        <el-scrollbar>
+          <el-menu
+              :collapse="isCollapse"
+              :collapse-transition="false"
+              :default-active="activePath"
+              router
+              unique-opened
+          >
+            <subMenu :menuList="menuList"/>
+          </el-menu>
+        </el-scrollbar>
       </el-aside>
       <el-container>
         <el-main>Main</el-main>
@@ -19,8 +29,19 @@
 </template>
 
 <script setup>
-import SideBar from '@/layout/SideBar/index.vue';
+import {computed, ref} from "vue";
 import Header from "@/layout/components/Header/index.vue";
+import SubMenu from "@/layout/components/Menu/SubMenu.vue";
+import {GlobalStore} from "@/stores";
+import {useMenuStore} from "@/stores/modules/menu";
+
+
+const globalStore = GlobalStore();
+const menuStore = useMenuStore();
+const isCollapse = computed(() => globalStore.themeConfig.isCollapse);
+const activePath = ref();
+const menuList = computed(() => menuStore.authMenuList);
+
 </script>
 
 <style lang="scss" scoped>
