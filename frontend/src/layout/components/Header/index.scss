@@ -1,3 +1,42 @@
 .is-active {
   transform: rotate(180deg);
 }
+
+.header {
+  flex: 1; // 占满宽度
+  padding-left: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+
+  &-left {
+    display: flex;
+    justify-content: flex-start;
+    overflow: hidden;
+    padding-right: 50px;
+    white-space: nowrap; // 防止文字换行
+    user-select: none; // 禁止选中文字
+
+    .breadcrumb {
+      margin-left: 10px;
+      display: flex;
+
+      :deep(.el-breadcrumb__separator) {
+        color: #cfd3dc;
+        line-height: 100%;
+      }
+
+      .inner-item {
+        display: flex;
+        align-items: center;
+
+        > span {
+          margin-right: 5px;
+        }
+      }
+    }
+
+
+  }
+}

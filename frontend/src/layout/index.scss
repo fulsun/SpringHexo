@@ -15,6 +15,21 @@
     text-align: center; // 文字居中
   }
 
+  :deep(.breadcrumb) {
+    .el-breadcrumb__inner {
+      color: #fff;
+
+      &:hover {
+        color: var(--el-color-primary);
+      }
+    }
+
+    .el-breadcrumb__item:last-child .el-breadcrumb__inner,
+    .el-breadcrumb__item:last-child .el-breadcrumb__inner:hover {
+      color: #cfd3dc;
+    }
+  }
+
   .column-inner {
     height: 0;
 

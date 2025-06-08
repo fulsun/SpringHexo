@@ -1,5 +1,3 @@
-export const Layout = () => import("@/layout/index.vue");
-
 // 静态路由配置
 const constantRoutes = [
     {
@@ -10,15 +8,15 @@ const constantRoutes = [
     {
         path: "/",
         name: "Layout",
-        component: Layout,
+        component: () => import("@/layout/index.vue"),
+        redirect: "/home",
         children: [
             {
-                path: "dashboard",
-                name: "Dashboard",
-                component: () => import("@/views/dashboard/index.vue"),
+                path: "home",
+                name: "首页",
+                component: () => import("@/layout/index.vue"),
                 meta: {
-                    title: "工作台",
-                    icon: "HomeFilled",
+                    title: "首页",
                 }
             }
         ],

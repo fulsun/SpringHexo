@@ -5,7 +5,18 @@
             :size="24"
             icon="material-symbols-light:menu-open"
             @click="collapse"/>
-
+      <el-breadcrumb class="breadcrumb" separator="/">
+        <el-breadcrumb-item
+            v-for="(item, index) in breadcrumbList"
+            :key="item.path"
+            :to="index === breadcrumbList.length - 1 ? null : item.path"
+        >
+          <div class="inner-item">
+            <Icon :icon="item.icon" :size="16"/>
+            <span>{{ item.title }}</span>
+          </div>
+        </el-breadcrumb-item>
+      </el-breadcrumb>
     </div>
     <div class="header-right">
     </div>
@@ -16,10 +27,22 @@
 import {computed} from "vue";
 import {GlobalStore} from "@/stores";
 import Icon from "@/components/Icon.vue";
+import {useMenuStore} from "@/stores/modules/menu";
+import {useRoute, useRouter} from "vue-router";
 
-const globalStore = GlobalStore();
+const route = useRoute();
+const router = useRouter();
+const globalStore = GlobalStore()
+const menuStore = useMenuStore();
 const themeConfig = computed(() => globalStore.themeConfig)
-
+const breadcrumbList = computed(
+    () => {
+      // 获取前激活的最底层子路由
+      const match = route.matched[route.matched.length - 1];
+      // 获取当前激活的菜单
+      return menuStore.breadcrumbList[match.path]
+    }
+);
 const collapse = () => {
   globalStore.themeConfig.isCollapse = !globalStore.themeConfig.isCollapse
 }
