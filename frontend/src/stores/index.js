@@ -2,6 +2,7 @@ import {createPinia, defineStore} from "pinia";
 import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 import piniaPersistConfig from "@/config/piniaPersist";
 import router from "@/router/index";
+import { useMenuStore } from '@/stores/modules/menu'; 
 
 
 export const GlobalStore = defineStore('GlobalState', {
@@ -29,7 +30,6 @@ export const GlobalStore = defineStore('GlobalState', {
             if (!this.tabsMenuList.some(item => item.path === tabItem.path)) {
                 this.tabsMenuList.push(tabItem);
             }
-            
         },
         removeTabs(tabPath, isCurrent = true) {
             const tabsMenuList = this.tabsMenuList;
@@ -53,6 +53,15 @@ export const GlobalStore = defineStore('GlobalState', {
                 console.log('尝试跳转到首页');
                 router.push("/"); // 跳转到首页
             }
+        },
+        logout() {
+            // 一键重置所有状态
+            this.$reset();
+            // 获取 MenuStore 实例并重置状态
+            const menuStore = useMenuStore();
+            menuStore.$reset();
+            // 跳转到登录页，需根据实际路由配置修改
+            router.replace("/login");
         }
     },
     persist: piniaPersistConfig("GlobalState"),

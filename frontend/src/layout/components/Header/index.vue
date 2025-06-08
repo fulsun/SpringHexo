@@ -75,8 +75,7 @@ const loginOut = () => {
     cancelButtonText: "取消",
     type: "warning",
   }).then(() => {
-    globalStore.setToken("");
-    router.replace("/login");
+    globalStore.logout();
   }).catch(() => {
   });
 };
