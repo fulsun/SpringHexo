@@ -64,6 +64,7 @@ const onLogin = (formEl) => {
         return ElMessage.error(message);
       }
       globalStore.setToken(data.token);
+      globalStore.setUserInfo(data.userInfo);
       // 加载菜单信息
       await menuStore.getMenuList();
       router.push("/");

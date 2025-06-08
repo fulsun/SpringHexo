@@ -8,7 +8,8 @@ export default [
                 data: {
                     token: 'xxxxx',
                     userInfo: {
-                        username: "admin"
+                        username: "admin",
+                        avatar: "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif"
                     }
                 },
                 message: '登录成功'

@@ -5,17 +5,23 @@ import piniaPersistConfig from "@/config/piniaPersist";
 
 export const GlobalStore = defineStore('GlobalState', {
     state: () => ({
-
         token: '',
         themeConfig: {
             // 折叠菜单
             isCollapse: false,
-        }
+        },
+        userInfo: {
+            avatar: "",
+            username: "",
+        },
     }),
     actions: {
         setToken(token) {
             this.token = token;
-        }
+        },
+        setUserInfo(userInfo) {
+            this.userInfo = userInfo;
+        },
     },
     persist: piniaPersistConfig("GlobalState"),
 })

@@ -19,6 +19,26 @@
       </el-breadcrumb>
     </div>
     <div class="header-right">
+      <span>{{ userInfo.username }}</span>
+      <el-dropdown trigger="hover">
+        <el-avatar
+            :size="40"
+            :src="userInfo.avatar"
+            class="avatar"
+            fit="cover"
+            icon="UserFilled"
+        />
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item>
+              <a href="/profile">个人中心</a>
+            </el-dropdown-item>
+            <el-dropdown-item @click="loginOut">
+              退出登录
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
     </div>
   </div>
 </template>
@@ -46,7 +66,20 @@ const breadcrumbList = computed(
 const collapse = () => {
   globalStore.themeConfig.isCollapse = !globalStore.themeConfig.isCollapse
 }
+const userInfo = computed(() => globalStore.userInfo);
 
+// 退出登录
+const loginOut = () => {
+  ElMessageBox.confirm("是否确认退出登录", "提示", {
+    confirmButtonText: "确定",
+    cancelButtonText: "取消",
+    type: "warning",
+  }).then(() => {
+    globalStore.setToken("");
+    router.replace("/login");
+  }).catch(() => {
+  });
+};
 </script>
 
 <style lang="scss" scoped>
