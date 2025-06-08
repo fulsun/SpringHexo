@@ -3,10 +3,10 @@
     <el-tabs
         v-model="tabsMenuValue"
         class="tabs-menu"
+        closable
         type="card"
-        @tab-click="changeTabsMenu"
-        @tab-change=""
-        @tab-remove=""
+        @tab-change="changeTabsMenu"
+        @tab-remove="removeTab"
     >
       <el-tab-pane
           v-for="(item, index) in tabsMenuList"
@@ -26,10 +26,10 @@
 
 <script setup>
 import {computed, ref, watch} from 'vue';
-import {useRoute} from 'vue-router';
 import router from "@/router/index.js";
 import {GlobalStore} from "@/stores/index.js";
 import Icon from "@/components/Icon.vue";
+import {useRoute} from "vue-router";
 // 打开的标签页
 const tabsMenuValue = ref();
 const route = useRoute();
@@ -51,6 +51,11 @@ watch(() => route.path, (newVal) => {
 const changeTabsMenu = (path) => {
   // 切换标签页
   router.push(path);
+}
+
+const removeTab = (path) => {
+  // 关闭标签页
+  globalStore.removeTabs(path, path === route.path);
 }
 </script>
 

@@ -1,6 +1,7 @@
 import {createPinia, defineStore} from "pinia";
 import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 import piniaPersistConfig from "@/config/piniaPersist";
+import router from "@/router/index";
 
 
 export const GlobalStore = defineStore('GlobalState', {
@@ -30,6 +31,24 @@ export const GlobalStore = defineStore('GlobalState', {
                 this.tabsMenuList.push(tabItem);
             }
         },
+        removeTabs(tabPath, isCurrent = true) {
+            const tabsMenuList = this.tabsMenuList;
+            if (isCurrent) {
+                // 如果删除的标签页是当前激活的标签页，则激活上一个标签页
+                tabsMenuList.forEach((item, index) => {
+                    if (item.path !== tabPath) return;
+                    const nextTab = tabsMenuList[index + 1] || tabsMenuList[index - 1];
+                    if (!nextTab) return;
+                    router.push(nextTab.path);
+                });
+            }
+            //从列表中删除标签页
+            this.tabsMenuList = tabsMenuList.filter((item) => item.path !== tabPath);
+            // 全部标签页关闭时，清空标签页列表
+            if (this.tabsMenuList.length === 0) {
+                router.push("/"); // 跳转到首页
+            }
+        }
     },
     persist: piniaPersistConfig("GlobalState"),
 });
