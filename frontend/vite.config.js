@@ -6,12 +6,14 @@ import Components from 'unplugin-vue-components/vite'
 import {ElementPlusResolver} from 'unplugin-vue-components/resolvers'
 import {viteMockServe} from 'vite-plugin-mock'
 import {createSvgIconsPlugin} from 'vite-plugin-svg-icons'
-import PurgeIcons from 'vite-plugin-purge-icons'
+import Icons from 'unplugin-icons/vite'
+import IconsResolver from "unplugin-icons/resolver";
+
 
 // https://vite.dev/config/
 export default defineConfig({
     build: {
-        outDir: path.resolve(__dirname, '../backend/src/main/resources/static/')
+        outDir: path.resolve(__dirname, 'dist')
     },
     plugins: [
         vue(),
@@ -24,7 +26,9 @@ export default defineConfig({
         Components({
             resolvers: [
                 // 自动导入 Element Plus 组件
-                ElementPlusResolver()
+                ElementPlusResolver(),
+                // 自动导入 Iconify 图标
+                IconsResolver()
             ],
         }),
         createSvgIconsPlugin({
@@ -40,7 +44,14 @@ export default defineConfig({
             prodEnabled: false, // 生产环境禁用
             logger: true, // 启用日志，方便调试
         }),
-        PurgeIcons()
+        Icons({
+            compiler: 'vue3',
+            autoInstall: true, // 自动安装图标集（按需）
+            // 关键配置：启用运行时图标加载
+            runtimeCompiler: true,
+            scale: 1, // 缩放比例
+            defaultClass: 'iconify', // 默认类名
+        })
     ],
     css: {
         preprocessorOptions: {
