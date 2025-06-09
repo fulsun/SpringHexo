@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindException;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -69,4 +70,15 @@ public class ExceptionAdvice {
         }
         return JsonUtils.objectToJsonString(json);
     }
+
+    @ResponseBody
+    @ResponseStatus(HttpStatus.UNSUPPORTED_MEDIA_TYPE) // 415
+    @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
+    public String handleMediaTypeNotSupported(HttpMediaTypeNotSupportedException e) {
+        log.error("不支持的 Content-Type", e);
+        Map<String, Object> json = new HashMap<>();
+        json.put("error", "请使用 application/json 格式提交数据");
+        return JsonUtils.objectToJsonString(json);
+    }
+
 }
