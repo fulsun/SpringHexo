@@ -25,7 +25,7 @@
 </template>
 
 <script setup>
-import {computed, ref, watch} from 'vue';
+import {computed, onMounted, ref, watch} from 'vue';
 import router from "@/router/index.js";
 import {GlobalStore} from "@/stores/index.js";
 import Icon from "@/components/Icon.vue";
@@ -68,6 +68,24 @@ const removeTab = (path) => {
 
 const menuStore = useMenuStore();
 
+onMounted(() => {
+  initTabs();
+});
+
+// 初始化需要固定的标签
+const initTabs = () => {
+  menuStore.flatMenuList.forEach((item) => {
+    if (item.isFixed) {
+      const tabsParams = {
+        icon: item.icon,
+        title: item.title,
+        path: item.path,
+        isFixed: true
+      };
+      globalStore.addTabs(tabsParams);
+    }
+  });
+};
 
 </script>
 

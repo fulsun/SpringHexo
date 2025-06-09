@@ -1,6 +1,6 @@
 import {defineStore} from "pinia";
 import {getMenuListApi} from "@/http/modules/menu";
-import {getAllBreadcrumbList} from "@/utils/utils";
+import {getAllBreadcrumbList, getFlatArr} from "@/utils/utils";
 
 export const useMenuStore = defineStore("MenuStore", {
     state: () => ({
@@ -11,7 +11,7 @@ export const useMenuStore = defineStore("MenuStore", {
         authMenuList: (state) => state.menuList,
         // 所有面包屑导航列表
         breadcrumbList: (state) => getAllBreadcrumbList(state.menuList),
-
+        flatMenuList: (state) => getFlatArr(state.menuList),
     },
     actions: {
         async getMenuList() {

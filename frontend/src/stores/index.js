@@ -2,7 +2,7 @@ import {createPinia, defineStore} from "pinia";
 import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 import piniaPersistConfig from "@/config/piniaPersist";
 import router from "@/router/index";
-import { useMenuStore } from '@/stores/modules/menu'; 
+import {useMenuStore} from '@/stores/modules/menu';
 
 
 export const GlobalStore = defineStore('GlobalState', {
@@ -46,11 +46,6 @@ export const GlobalStore = defineStore('GlobalState', {
             this.tabsMenuList = tabsMenuList.filter((item) => item.path !== tabPath);
             // 全部标签页关闭时，清空标签页列表
             if (this.tabsMenuList.length === 0) {
-                if (!router) {
-                    console.error('路由实例获取失败');
-                    return;
-                }
-                console.log('尝试跳转到首页');
                 router.push("/"); // 跳转到首页
             }
         },
