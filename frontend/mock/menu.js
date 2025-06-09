@@ -11,7 +11,9 @@ export default [
                             id: 1,
                             title: '首页',
                             path: '/home',
-                            icon: 'mdi-light:home'
+                            icon: 'mdi-light:home',
+                            // 固定标签
+                            isFixed: true,
                         },
                         {
                             id: 2,

@@ -3,7 +3,6 @@
     <el-tabs
         v-model="tabsMenuValue"
         class="tabs-menu"
-        closable
         type="card"
         @tab-change="changeTabsMenu"
         @tab-remove="removeTab"
@@ -11,12 +10,13 @@
       <el-tab-pane
           v-for="(item, index) in tabsMenuList"
           :key="index"
+          :closable="item.isFixed !==true"
           :label="item.title"
           :name="item.path">
         <template #label>
         <span class="custom-tabs-label">
           <Icon :icon="item.icon"/>
-          <span>{{ item.title }}</span>
+          <span>{{ item.title }} </span>
         </span>
         </template>
       </el-tab-pane>
@@ -30,6 +30,7 @@ import router from "@/router/index.js";
 import {GlobalStore} from "@/stores/index.js";
 import Icon from "@/components/Icon.vue";
 import {useRoute} from "vue-router";
+import {useMenuStore} from "@/stores/modules/menu.js";
 // 打开的标签页
 const route = useRoute();
 const tabsMenuValue = ref(route.path);
@@ -44,6 +45,7 @@ watch(() => route.path, (newPath) => {
       icon: route.meta.icon,
       title: route.meta.title,
       path: route.path,
+      isFixed: route.isFixed
     };
     globalStore.addTabs(tab);
     // 切换标签页
@@ -63,6 +65,10 @@ const removeTab = (path) => {
   // 关闭标签页
   globalStore.removeTabs(path, path === route.path);
 }
+
+const menuStore = useMenuStore();
+
+
 </script>
 
 <style lang="scss" scoped>
