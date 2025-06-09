@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.fulsun.hexoadmin.db.mapper.MenusEntityMapper">
+    <resultMap id="BaseResultMap" type="pers.fulsun.hexoadmin.db.entity.MenusEntity">
+        <!--@mbg.generated-->
+        <!--@Table springhexo.t_menus-->
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="path" property="path"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="icon" property="icon"/>
+        <result column="sort" property="sort"/>
+        <result column="is_fixed" property="isFixed"/>
+        <result column="created_at" property="createdAt"/>
+        <result column="updated_at" property="updatedAt"/>
+        <result column="is_delete" property="isDelete"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, title, `path`, parent_id, icon, sort, is_fixed, created_at, updated_at, is_delete
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from springhexo.t_menus
+        where id = #{id}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbg.generated-->
+        delete from springhexo.t_menus
+        where id = #{id}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="pers.fulsun.hexoadmin.db.entity.MenusEntity"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into springhexo.t_menus (title, `path`, parent_id, icon, sort, is_fixed, created_at,
+        updated_at, is_delete)
+        values (#{title}, #{path}, #{parentId}, #{icon}, #{sort}, #{isFixed}, #{createdAt},
+        #{updatedAt}, #{isDelete})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id"
+            parameterType="pers.fulsun.hexoadmin.db.entity.MenusEntity" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into springhexo.t_menus
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="title != null">
+                title,
+            </if>
+            <if test="path != null">
+                `path`,
+            </if>
+            <if test="parentId != null">
+                parent_id,
+            </if>
+            <if test="icon != null">
+                icon,
+            </if>
+            <if test="sort != null">
+                sort,
+            </if>
+            <if test="isFixed != null">
+                is_fixed,
+            </if>
+            <if test="createdAt != null">
+                created_at,
+            </if>
+            <if test="updatedAt != null">
+                updated_at,
+            </if>
+            <if test="isDelete != null">
+                is_delete,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="title != null">
+                #{title},
+            </if>
+            <if test="path != null">
+                #{path},
+            </if>
+            <if test="parentId != null">
+                #{parentId},
+            </if>
+            <if test="icon != null">
+                #{icon},
+            </if>
+            <if test="sort != null">
+                #{sort},
+            </if>
+            <if test="isFixed != null">
+                #{isFixed},
+            </if>
+            <if test="createdAt != null">
+                #{createdAt},
+            </if>
+            <if test="updatedAt != null">
+                #{updatedAt},
+            </if>
+            <if test="isDelete != null">
+                #{isDelete},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="pers.fulsun.hexoadmin.db.entity.MenusEntity">
+        <!--@mbg.generated-->
+        update springhexo.t_menus
+        <set>
+            <if test="title != null">
+                title = #{title},
+            </if>
+            <if test="path != null">
+                `path` = #{path},
+            </if>
+            <if test="parentId != null">
+                parent_id = #{parentId},
+            </if>
+            <if test="icon != null">
+                icon = #{icon},
+            </if>
+            <if test="sort != null">
+                sort = #{sort},
+            </if>
+            <if test="isFixed != null">
+                is_fixed = #{isFixed},
+            </if>
+            <if test="createdAt != null">
+                created_at = #{createdAt},
+            </if>
+            <if test="updatedAt != null">
+                updated_at = #{updatedAt},
+            </if>
+            <if test="isDelete != null">
+                is_delete = #{isDelete},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="pers.fulsun.hexoadmin.db.entity.MenusEntity">
+        <!--@mbg.generated-->
+        update springhexo.t_menus
+        set title = #{title},
+        `path` = #{path},
+        parent_id = #{parentId},
+        icon = #{icon},
+        sort = #{sort},
+        is_fixed = #{isFixed},
+        created_at = #{createdAt},
+        updated_at = #{updatedAt},
+        is_delete = #{isDelete}
+        where id = #{id}
+    </update>
+
+    <select id="queryAllMenus" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from springhexo.t_menus
+        where is_delete = 0
+        order by sort
+    </select>
+</mapper>
