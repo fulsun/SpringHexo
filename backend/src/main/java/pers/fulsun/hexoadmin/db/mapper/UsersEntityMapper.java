@@ -16,4 +16,6 @@ public interface UsersEntityMapper {
     int updateByPrimaryKeySelective(UsersEntity record);
 
     int updateByPrimaryKey(UsersEntity record);
+
+    UsersEntity selectByUsername(String username);
 }

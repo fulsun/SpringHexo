@@ -1,105 +1,127 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="pers.fulsun.hexoadmin.db.mapper.UsersEntityMapper">
-  <resultMap id="BaseResultMap" type="pers.fulsun.hexoadmin.db.entity.UsersEntity">
-    <!--@mbg.generated-->
-    <!--@Table springhexo.t_users-->
-    <id column="id" property="id" />
-    <result column="username" property="username" />
-    <result column="password" property="password" />
-    <result column="email" property="email" />
-    <result column="created_at" property="createdAt" />
-    <result column="updated_at" property="updatedAt" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    <!--@mbg.generated-->
-    id, username, `password`, email, created_at, updated_at
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    <!--@mbg.generated-->
-    select 
-    <include refid="Base_Column_List" />
-    from springhexo.t_users
-    where id = #{id}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    <!--@mbg.generated-->
-    delete from springhexo.t_users
-    where id = #{id}
-  </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="pers.fulsun.hexoadmin.db.entity.UsersEntity" useGeneratedKeys="true">
-    <!--@mbg.generated-->
-    insert into springhexo.t_users (username, `password`, email, created_at, updated_at)
-    values (#{username}, #{password}, #{email}, #{createdAt}, #{updatedAt})
-  </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="pers.fulsun.hexoadmin.db.entity.UsersEntity" useGeneratedKeys="true">
-    <!--@mbg.generated-->
-    insert into springhexo.t_users
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="username != null">
-        username,
-      </if>
-      <if test="password != null">
-        `password`,
-      </if>
-      <if test="email != null">
-        email,
-      </if>
-      <if test="createdAt != null">
-        created_at,
-      </if>
-      <if test="updatedAt != null">
-        updated_at,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="username != null">
-        #{username},
-      </if>
-      <if test="password != null">
-        #{password},
-      </if>
-      <if test="email != null">
-        #{email},
-      </if>
-      <if test="createdAt != null">
-        #{createdAt},
-      </if>
-      <if test="updatedAt != null">
-        #{updatedAt},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="pers.fulsun.hexoadmin.db.entity.UsersEntity">
-    <!--@mbg.generated-->
-    update springhexo.t_users
-    <set>
-      <if test="username != null">
-        username = #{username},
-      </if>
-      <if test="password != null">
+    <resultMap id="BaseResultMap" type="pers.fulsun.hexoadmin.db.entity.UsersEntity">
+        <!--@mbg.generated-->
+        <!--@Table springhexo.t_users-->
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="email" property="email"/>
+        <result column="created_at" property="createdAt"/>
+        <result column="updated_at" property="updatedAt"/>
+        <result column="isdelete" property="isdelete"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, username, `password`, email, created_at, updated_at, isdelete
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from springhexo.t_users
+        where id = #{id}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbg.generated-->
+        delete from springhexo.t_users
+        where id = #{id}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="pers.fulsun.hexoadmin.db.entity.UsersEntity"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into springhexo.t_users (username, `password`, email, created_at, updated_at, isdelete
+        )
+        values (#{username}, #{password}, #{email}, #{createdAt}, #{updatedAt}, #{isdelete}
+        )
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id"
+            parameterType="pers.fulsun.hexoadmin.db.entity.UsersEntity" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into springhexo.t_users
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                username,
+            </if>
+            <if test="password != null">
+                `password`,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="createdAt != null">
+                created_at,
+            </if>
+            <if test="updatedAt != null">
+                updated_at,
+            </if>
+            <if test="isdelete != null">
+                isdelete,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                #{username},
+            </if>
+            <if test="password != null">
+                #{password},
+            </if>
+            <if test="email != null">
+                #{email},
+            </if>
+            <if test="createdAt != null">
+                #{createdAt},
+            </if>
+            <if test="updatedAt != null">
+                #{updatedAt},
+            </if>
+            <if test="isdelete != null">
+                #{isdelete},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="pers.fulsun.hexoadmin.db.entity.UsersEntity">
+        <!--@mbg.generated-->
+        update springhexo.t_users
+        <set>
+            <if test="username != null">
+                username = #{username},
+            </if>
+            <if test="password != null">
+                `password` = #{password},
+            </if>
+            <if test="email != null">
+                email = #{email},
+            </if>
+            <if test="createdAt != null">
+                created_at = #{createdAt},
+            </if>
+            <if test="updatedAt != null">
+                updated_at = #{updatedAt},
+            </if>
+            <if test="isdelete != null">
+                isdelete = #{isdelete},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="pers.fulsun.hexoadmin.db.entity.UsersEntity">
+        <!--@mbg.generated-->
+        update springhexo.t_users
+        set username = #{username},
         `password` = #{password},
-      </if>
-      <if test="email != null">
         email = #{email},
-      </if>
-      <if test="createdAt != null">
         created_at = #{createdAt},
-      </if>
-      <if test="updatedAt != null">
         updated_at = #{updatedAt},
-      </if>
-    </set>
-    where id = #{id}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="pers.fulsun.hexoadmin.db.entity.UsersEntity">
-    <!--@mbg.generated-->
-    update springhexo.t_users
-    set username = #{username},
-      `password` = #{password},
-      email = #{email},
-      created_at = #{createdAt},
-      updated_at = #{updatedAt}
-    where id = #{id}
-  </update>
+        isdelete = #{isdelete}
+        where id = #{id}
+    </update>
+
+    <select id="selectByUsername" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from springhexo.t_users
+        where username = #{username} and isdelete = 0
+    </select>
 </mapper>

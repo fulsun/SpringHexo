@@ -1,31 +1,58 @@
 package pers.fulsun.hexoadmin.db.entity;
 
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import lombok.Data;
+import java.util.Date;
 
 @Data
 public class UsersEntity {
-    @NotNull(message = "不能为null")
+    /**
+     * 用户ID
+     */
+    @NotNull(message = "用户ID不能为null")
     private Integer id;
 
-    @Size(max = 50, message = "最大长度要小于 50")
-    @NotBlank(message = "不能为空")
+    /**
+     * 用户名
+     */
+    @Size(max = 50, message = "用户名最大长度要小于 50")
+    @NotBlank(message = "用户名不能为空")
     private String username;
 
-    @Size(max = 100, message = "最大长度要小于 100")
-    @NotBlank(message = "不能为空")
+    /**
+     * 密码
+     */
+    @Size(max = 100, message = "密码最大长度要小于 100")
+    @NotBlank(message = "密码不能为空")
+    @JsonIgnore
     private String password;
 
-    @Size(max = 100, message = "最大长度要小于 100")
-    @NotBlank(message = "不能为空")
+    /**
+     * 邮箱地址
+     */
+    @Size(max = 100, message = "邮箱地址最大长度要小于 100")
+    @NotBlank(message = "邮箱地址不能为空")
     private String email;
 
-    @NotNull(message = "不能为null")
+    /**
+     * 创建时间
+     */
+    @NotNull(message = "创建时间不能为null")
     private Date createdAt;
 
-    @NotNull(message = "不能为null")
+    /**
+     * 更新时间
+     */
+    @NotNull(message = "更新时间不能为null")
     private Date updatedAt;
+
+    /**
+     * 是否删除 0:未删除 1:已删除
+     */
+    @NotNull(message = "是否删除 0:未删除 1:已删除不能为null")
+    private Boolean isdelete;
 }
