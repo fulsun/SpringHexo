@@ -10,7 +10,7 @@
       <el-tab-pane
           v-for="(item, index) in tabsMenuList"
           :key="index"
-          :closable="item.isFixed !==true"
+          :closable="item==null || !item.isFixed"
           :label="item.title"
           :name="item.path">
         <template #label>
@@ -90,11 +90,10 @@ const initTabs = () => {
 </script>
 
 <style lang="scss" scoped>
-.tabs-menu > .el-tabs__content {
-  padding: 32px;
-  color: #6b778c;
-  font-size: 32px;
-  font-weight: 600;
+.tabs-menu {
+  :deep(.el-tabs__nav) {
+    border-left: none;
+  }
 }
 
 .tabs-menu .custom-tabs-label {
