@@ -17,7 +17,7 @@ export const useMenuStore = defineStore("MenuStore", {
         async getMenuList() {
             const response = await getMenuListApi();
             const {data} = response;
-            this.menuList = data.menu
+            this.menuList = data;
         },
     },
     persist: true

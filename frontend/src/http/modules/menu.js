@@ -2,5 +2,5 @@
 import {get} from "@/http/index.js";
 
 export const getMenuListApi = () => {
-    return get("/api/getMenuItems", {})
+    return get("/api/menus", {})
 };

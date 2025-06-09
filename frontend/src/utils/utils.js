@@ -24,6 +24,9 @@ export function getTimeState() {
  * @returns object
  */
 export const getAllBreadcrumbList = (menuList, result = {}, parent = []) => {
+    if (!menuList || menuList.length === 0) {
+        return result;
+    }
     for (const item of menuList) {
         if (parent && parent.length > 0) { // 父级菜单不为空
             // 父级菜单不为空，则将当前菜单和父级菜单组合成为新的面包屑
