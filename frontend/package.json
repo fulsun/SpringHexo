@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:mock": "vite --mode mock",
+    "dev:server": "vite --mode server",
     "build": "vite build",
-    "generate:icons": "node scripts/generateIconWhitelist.js",
     "build-boot": "pnpm i && vite build",
     "preview": "vite preview"
   },
