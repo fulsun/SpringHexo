@@ -2,8 +2,8 @@
   <div class="header">
     <div class="header-left">
       <Icon :class="['collapse-icon', { 'is-active': themeConfig.isCollapse }]"
-            :size="24"
-            icon="material-symbols-light:menu-open"
+            :size="32"
+            icon="ep:fold"
             @click="collapse"/>
       <el-breadcrumb class="breadcrumb" separator="/">
         <el-breadcrumb-item
