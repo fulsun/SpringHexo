@@ -2,9 +2,9 @@
 
 一个简单的 Hexo 博客管理系统
 
-## 环境要求
+## 环境搭建
 
-- Node.js
-- Java8
-- Vue.js
-- Vite
+[参考环境搭建示例](./docs/install.md)
+
+
+
