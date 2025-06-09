@@ -5,5 +5,5 @@ import {post} from "@/http";
  */
 // 用户登录
 export const loginApi = (params) => {
-    return post("/api/login", JSON.stringify(params));
+    return post("/api/login", params);
 };
