@@ -4,9 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --mode server",
     "dev:mock": "vite --mode mock",
-    "dev:server": "vite --mode server",
     "build": "vite build",
     "build-boot": "pnpm i && vite build",
     "preview": "vite preview"

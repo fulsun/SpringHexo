@@ -94,6 +94,10 @@ const initTabs = () => {
   :deep(.el-tabs__nav) {
     border-left: none;
   }
+
+  :deep(.el-tabs__header) {
+    margin-bottom: 0;
+  }
 }
 
 .tabs-menu .custom-tabs-label {
@@ -105,6 +109,8 @@ const initTabs = () => {
     display: inline-block;
     margin-left: 4px;
   }
+
+
 }
 
 </style>

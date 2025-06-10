@@ -4,7 +4,7 @@ import path from 'path'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import {ElementPlusResolver} from 'unplugin-vue-components/resolvers'
-import {viteMockServe} from 'vite-plugin-mock'
+//import {viteMockServe} from 'vite-plugin-mock'
 import {createSvgIconsPlugin} from 'vite-plugin-svg-icons'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from "unplugin-icons/resolver";
@@ -12,7 +12,6 @@ import IconsResolver from "unplugin-icons/resolver";
 
 // https://vite.dev/config/
 export default defineConfig(({mode}) => {
-    console.log('当前运行模式:', mode); // 添加调试日志
     return {
         build: {
             outDir: path.resolve(__dirname, '../backend/src/main/resources/static/')
@@ -27,12 +26,12 @@ export default defineConfig(({mode}) => {
             // 指定图标文件夹
             iconDirs: [path.resolve(__dirname, './src/assets/svgs')], // 指定symbolId格式
             symbolId: 'icon-[dir]-[name]', svgoOptions: true, // 传递给svgo的配置项
-        }), viteMockServe({
+        }), /*viteMockServe({
             mockPath: 'mock', // mock文件存放目录
-            localEnabled: mode === 'mock', // 根据模式决定是否启用mock
+            localEnabled: false, // mode === 'mock', // 根据模式决定是否启用mock
             prodEnabled: false, // 生产环境禁用
             logger: true, // 启用日志，方便调试
-        }), Icons({
+        }),*/ Icons({
             compiler: 'vue3', autoInstall: true, // 自动安装图标集（按需）
             // 关键配置：启用运行时图标加载
             runtimeCompiler: true, scale: 1, // 缩放比例
