@@ -19,3 +19,8 @@ mybatis:
   mapper-locations: classpath:mapper/*.xml
   configuration:
     map-underscore-to-camel-case: true
+
+
+jwt:
+  token-validity: 60000 # token有效期，单位：毫秒
+  secret-key: 9MQjIiLJmRLvQH+f6iSHKhgHybC6v3YAAq/AHWAxYlA= # 密钥
