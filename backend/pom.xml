@@ -51,32 +51,40 @@
     <build>
         <plugins>
             <!--执行frontend的npm build命令-->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>3.1.0</version>
-                <executions>
-                    <execution>
-                        <id>build-frontend</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <configuration>
-                            <executable>pnpm</executable>
-                            <arguments>
-                                <argument>run</argument>
-                                <argument>build-boot</argument>
-                            </arguments>
-                            <workingDirectory>../frontend</workingDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+            <!--<plugin>-->
+            <!--    <groupId>org.codehaus.mojo</groupId>-->
+            <!--    <artifactId>exec-maven-plugin</artifactId>-->
+            <!--    <version>3.1.0</version>-->
+            <!--    <executions>-->
+            <!--        <execution>-->
+            <!--            <id>build-frontend</id>-->
+            <!--            <phase>package</phase>-->
+            <!--            <goals>-->
+            <!--                <goal>exec</goal>-->
+            <!--            </goals>-->
+            <!--            <configuration>-->
+            <!--                <executable>pnpm</executable>-->
+            <!--                <arguments>-->
+            <!--                    <argument>run</argument>-->
+            <!--                    <argument>build-boot</argument>-->
+            <!--                </arguments>-->
+            <!--                <workingDirectory>../frontend</workingDirectory>-->
+            <!--            </configuration>-->
+            <!--        </execution>-->
+            <!--    </executions>-->
+            <!--</plugin>-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.3.6.RELEASE</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>  <!-- 明确绑定到package阶段 -->
+                        <goals>
+                            <goal>repackage</goal>  <!-- 关键！必须包含此目标 -->
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
