@@ -28,7 +28,6 @@
           </el-main>
         </el-scrollbar>
         <el-footer>
-          footer
         </el-footer>
       </el-container>
     </el-container>

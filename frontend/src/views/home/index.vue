@@ -28,12 +28,16 @@
 
     <div class="chart-info">
       <el-row :gutter="20">
-        <el-col :span="10">
+        <el-col :span="12">
           <el-card>
-            访问趋势
+            <template #header>
+              <div class="card-header">
+              </div>
+              </template>
+            <LineChart :options="chartOptions" :loading="loading" />
           </el-card>
         </el-col>
-        <el-col :span="8">
+        <el-col :span="6">
           <el-calendar  />
         </el-col>
         <el-col :span="6">
@@ -47,9 +51,11 @@
 </template>
 
 <script setup>
+import {onMounted, onUnmounted, ref, watch} from 'vue';
 import {GlobalStore} from "@/stores/index.js";
 import {getTimeState} from "@/utils/utils.js";
 import {computed, reactive} from "vue";
+import LineChart   from "@/components/LineChart.vue";
 
 const globalStore = GlobalStore();
 const {userInfo} = globalStore;
@@ -79,6 +85,52 @@ const summary = reactive([
 
 const hello = computed(() => {
   return getTimeState() + " ," + userInfo.username;
+});
+
+const loading = ref(false);
+
+const chartOptions = ref({
+  title: {
+    text: '访问趋势'
+  },
+  tooltip: {
+    trigger: 'axis'
+  },
+  legend: {
+    data: ['浏览量(PV)', '访问量（UV）']
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: {
+    type: 'category',
+    boundaryGap: false,
+    data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月']
+  },
+  yAxis: {
+    type: 'value'
+  },
+  series: [
+    {
+      name: '访问量（UV）',
+      type: 'line',
+      stack: 'x',
+      areaStyle: {},
+      smooth: true,
+      data: [120, 132, 101, 134, 90, 230, 210]
+    },
+    {
+      name: '浏览量(PV)',
+      type: 'line',
+      stack: 'x',
+      areaStyle: {},
+      smooth: true,
+      data: [220, 182, 191, 234, 290, 330, 310]
+    }
+  ]
 });
 
 </script>
@@ -148,7 +200,28 @@ $color-primary: #807a7c;
 
   .chart-info {
     margin-top: 20px;
-    border: 1px solid red;
+
+    :deep(.el-calendar) {
+        font-size: 14px;
+        .next {
+          border: none;
+        }
+        td {
+          border: none;
+        }
+        .el-calendar-day {
+          height: 45px !important;
+          text-align: center;
+          border: none;
+        }
+        .el-calendar__header {
+          justify-content: space-between;
+        }
+        .is-selected {
+          background-color: #1d8dd8;
+          color: #fff;
+        }
+    }
   }
 }
 </style>
