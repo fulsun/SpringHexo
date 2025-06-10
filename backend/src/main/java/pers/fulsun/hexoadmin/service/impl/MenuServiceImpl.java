@@ -6,6 +6,7 @@ import pers.fulsun.hexoadmin.db.entity.MenusEntity;
 import pers.fulsun.hexoadmin.db.mapper.MenusEntityMapper;
 import pers.fulsun.hexoadmin.dto.response.MenuInfoResponse;
 import pers.fulsun.hexoadmin.service.MenuService;
+import pers.fulsun.hexoadmin.utils.TreeBuilder;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -20,11 +21,11 @@ public class MenuServiceImpl implements MenuService {
     public List<MenuInfoResponse> getMenus() {
         List<MenusEntity> menus = menuMapper.queryAllMenus();
         // DTO转换
-        return menus.stream().map(menu -> {
+        List<MenuInfoResponse> allMenus = menus.stream().map(menu -> {
             MenuInfoResponse response = new MenuInfoResponse();
             BeanUtils.copyProperties(menu, response);
             return response;
         }).collect(Collectors.toList());
-
+        return TreeBuilder.build(allMenus);
     }
 }
