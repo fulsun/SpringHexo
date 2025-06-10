@@ -1,6 +1,6 @@
 <template>
   <div class="home-container">
-    <el-card class="userInfo-card" :shadow="false">
+    <el-card class="userInfo-card" shadow="never" >
       <el-avatar :size="100" :src="userInfo.avatar"/>
       <div class="userInfo">
         <h4>{{ hello }}！</h4>
@@ -10,7 +10,7 @@
 
     <div class="sunmmary-info">
       <el-row :gutter="20">
-        <el-col :span="6" v-for="item,index in summary" :key="index" shadow="hover">
+        <el-col :span="6" v-for="item,index in summary" :key="index">
           <el-card shadow="hover">
             <template #header>
               <div class="card-header">
