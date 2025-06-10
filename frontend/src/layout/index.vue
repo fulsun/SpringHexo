@@ -21,10 +21,12 @@
       <el-container>
         <!-- 这里是菜单栏-->
         <Tabs/>
-        <el-main>
-          <!-- 这里是主要内容-->
-          <Main/>
-        </el-main>
+        <el-scrollbar class="scrollable-main">
+          <el-main>
+            <!-- 这里是主要内容-->
+            <Main/>
+          </el-main>
+        </el-scrollbar>
         <el-footer>
           footer
         </el-footer>

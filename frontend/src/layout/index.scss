@@ -1,5 +1,5 @@
 .layout {
-  height: 100%; // 高度为100%
+  height: 100vh;
 
 
   .el-header {
@@ -37,6 +37,9 @@
   }
 
   .column-inner {
+    flex: 1;
+    overflow: hidden; /* 禁止外部容器滚动 */
+
     .el-aside {
       height: 100%;
       border-right: 1px solid var(--el-border-color);
@@ -48,16 +51,22 @@
         overflow-x: hidden;
       }
     }
+
+    .scrollable-main {
+      flex: 1; // 子元素的宽度占满剩余空间
+      // 内容区域
+      .el-main {
+        padding: 5px;
+        display: flex;
+        flex-direction: column; //上下排列
+        height: 100%;
+        background: #f5f8fd;
+
+      }
+    }
+
+
   }
 
-  // 内容区域
-  .el-main {
 
-    padding: 5px;
-    display: flex;
-    flex-direction: column; //上下排列
-    height: 100%;
-    background: #f5f8fd;
-
-  }
 }
